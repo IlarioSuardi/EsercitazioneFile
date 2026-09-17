@@ -4,18 +4,28 @@ class Main {
     public static void main(String[] args) {
 
         try {
+            BufferedReader tastiera = new BufferedReader(
+                    new InputStreamReader(System.in)
+            );
+
+            System.out.print("Inserisci nome: ");
+            String nome = tastiera.readLine();
+
+            System.out.print("Inserisci cognome: ");
+            String cognome = tastiera.readLine();
+
+            System.out.print("Inserisci luogo vacanza: ");
+            String luogo = tastiera.readLine();
+
+            System.out.print("Inserisci azienda PCTO: ");
+            String azienda = tastiera.readLine();
+
+
             FileWriter fw = new FileWriter("persona.csv", true);
             BufferedWriter bw = new BufferedWriter(fw);
 
             bw.newLine();
-            bw.write("Davide,Paternò,mare,ABB \n");
-            bw.write("Ilario,Suardi,gallipoli/napoli,projectInfo \n");
-            bw.write("Deyae,Bellafkih,salento,exa italia \n");
-            bw.write("Federico,Mazzoleni,toscana/riccione,otg informatica \n");
-            bw.write("Giacomo,Rota,brasile,tecnobody \n");
-            bw.write("Yassin,Ouldib,marocco,non fatto \n");
-            bw.write("Zakkaria,ElHaiki,marocco/riccione,projectInfo \n");
-            bw.write("Daouda,Ndaw,lecco,projectInfo \n");
+            bw.write(nome + "," + cognome + "," + luogo + "," + azienda);
 
             bw.close();
             fw.close();
@@ -47,14 +57,8 @@ class Main {
             fr.close();
 
 
-            System.out.println("DATI PRESENTI:");
-
-            for (int j = 0; j < i; j++) {
-                System.out.println(persone[j].toCSV());
-            }
-
-
-            String cognomeCercato = "Rota";
+            System.out.print("\nInserisci il cognome da cercare: ");
+            String cognomeCercato = tastiera.readLine();
 
             System.out.println("\nRICERCA DI: " + cognomeCercato);
 
